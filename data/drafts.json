@@ -1,0 +1,60 @@
+[
+	{
+		"widget":"html-extended",
+		"data":{
+			"template":"<!-- Simple Content example, slider disabled, no data defined -->\r\n<section class=\"fdb-block\">\r\n    <div class=\"container\">\r\n        <div class=\"row pb-3\">\r\n            <div class=\"col-xs-12 text-center\">\r\n                <h1>Simple Content</h1>\r\n            </div>\r\n        </div>\r\n        <div class=\"row pt-5 justify-content-center align-items-center\">\r\n            <div class=\"col-xs-3\">\r\n                <img alt=\"image\" class=\"img-responsive\" src=\"/plugins/nodebb-widget-html-extended/images/undraw_A_day_at_the_park_re_9kxj.png\">\r\n            </div>\r\n            <div class=\"col-xs-3 col-xs-offset-1\">\r\n                <img alt=\"image\" class=\"img-responsive\" src=\"/plugins/nodebb-widget-html-extended/images/undraw_My_universe_re_txot.png\">\r\n            </div>\r\n            <div class=\"col-xs-3 col-xs-offset-1\">\r\n                <img alt=\"image\" class=\"img-responsive\" src=\"/plugins/nodebb-widget-html-extended/images/undraw_Statistics_re_kox4.png\">\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>",
+			"less":".lead {\r\n    \r\n}",
+			"data":"[\r\n    {\r\n        \"title\": \"Buon Natale!\",\r\n        \"description\": \"Felice Anno Nuovo\"\r\n    },\r\n    {\r\n        \"title\": \"Awesome Things\",\r\n        \"description\": \"Felice Anno Nuovo\"\r\n    }\r\n]",
+			"sliderMode":"",
+			"maxSlides":"",
+			"wrapperClass":"",
+			"title":"Simple Content",
+			"container":""
+		}
+	},
+	{
+		"widget":"html-extended",
+		"data":{
+			"template":"<!-- Simple Slider example, slider enabled, 'slides' property contains data -->\r\n<section class=\"fdb-block\">\r\n    <div class=\"container\">\r\n        <div class=\"row pb-3\">\r\n            <div class=\"col-xs-12 text-center\">\r\n                <h1>{slides.title}</h1>\r\n            </div>\r\n        </div>\r\n        <div class=\"row pt-5 justify-content-center align-items-center\">\r\n            {{{ each slides.icons }}}\r\n            <div class=\"col-xs-3<!-- IF !@first --> col- xs-offset-1 <!-- END -->\">\r\n                <img alt=\"image\" class=\"img-responsive\" src=\"{slides.icons}\">\r\n            </div>\r\n            {{{ end }}}\r\n        </div>\r\n    </div>\r\n</section>",
+			"less":".bx-wrapper {\r\n    /* custom properties for bxslider go here */\r\n    /* they affect all bxSlider instances in the page */\r\n    &.my-wrapper {\r\n        /* custom wrapper class (see Settings tab) */\r\n        /* affects only this single widgets */\r\n        box-shadow: none;\r\n        border: none;\r\n    }\r\n}",
+			"data":"[\r\n    {\r\n        \"title\": \"Special Slides\",\r\n        \"icons\": [\r\n            \"/plugins/nodebb-widget-html-extended/images/undraw_A_day_at_the_park_re_9kxj.png\",\r\n            \"/plugins/nodebb-widget-html-extended/images/undraw_My_universe_re_txot.png\",\r\n            \"/plugins/nodebb-widget-html-extended/images/undraw_Statistics_re_kox4.png\"\r\n        ]\r\n    },\r\n    {\r\n        \"title\": \"More Slides to Go\",\r\n        \"icons\": [\r\n            \"/plugins/nodebb-widget-html-extended/images/undraw_Powerful_re_frhr.png\",\r\n            \"/plugins/nodebb-widget-html-extended/images/undraw_Messaging_fun_re_vic9.png\",\r\n            \"/plugins/nodebb-widget-html-extended/images/undraw_Faq_re_31cw.png\"\r\n        ]\r\n    }\r\n]",
+			"sliderMode":"horizontal",
+			"maxSlides":"",
+			"wrapperClass":"my-wrapper",
+			"enablePager":"on",
+			"title":"Simple Slider",
+			"container":""
+		}
+	},
+	{
+		"widget":"html-extended",
+		"data":{
+			"template":"<!-- IF slides.isLeft -->\r\n<section class=\"fdb-block\">\r\n    <div class=\"container\">\r\n        <div class=\"row align-items-center\">\r\n            <div class=\"col-xs-12 col-md-5 mb-4 mb-md-0\">\r\n                <img alt=\"image\" class=\"img-responsive\" src=\"/plugins/nodebb-widget-html-extended/images/undraw_A_day_at_the_park_re_9kxj.png\">\r\n            </div>\r\n            <div class=\"col-xs-12 col-md-6 ml-md-2 text-left\">\r\n                <h1>{slides.title}</h1>\r\n                <p class=\"lead\">{slides.description}</p>\r\n                <p><a class=\"btn btn-warning mt-4\" href=\"https://www.froala.com\">Download</a></p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n<!-- ELSE -->\r\n<section class=\"fdb-block py-5\" style=\"background-image: url(/plugins/nodebb-widget-html-extended/images/8.svg)\">\r\n    <div class=\"container\">\r\n        <div class=\"row align-items-center\">\r\n            <div class=\"col-xs-12 col-md-6 col-lg-5 ml-2\">\r\n                <img alt=\"image\" class=\"fdb-icon\" src=\"/plugins/nodebb-widget-html-extended/images/github.svg\">\r\n                <h1>{slides.title}</h1>\r\n                <p class=\"lead\">{slides.description}</p>\r\n            </div>\r\n            <div class=\"col-xs-10 col-sm-6 m-auto col-md-4 pt-4 pt-md-0\">\r\n                <img alt=\"image\" class=\"img-responsive\" src=\"/plugins/nodebb-widget-html-extended/images/undraw_back_in_the_day_knsh.svg\">\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n<!-- ENDIF -->",
+			"less":"",
+			"data":"[\r\n    {\r\n        \"isLeft\": true,\r\n        \"title\": \"Froala Blocks\",\r\n        \"description\": \"A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.\"\r\n    },\r\n    {\r\n        \"isLeft\": false,\r\n        \"title\": \"Design Blocks\",\r\n        \"description\": \"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.\"\r\n    }\r\n]",
+			"sliderMode":"fade",
+			"maxSlides":"",
+			"wrapperClass":"",
+			"enableControls":"on",
+			"title":"Multiple Templates",
+			"container":""
+		}
+	},
+	{	"widget":"html-extended",
+		"data":{
+			"template":"<div class=\"imgCarousel {../cssClass}\" style=\"background-image: url('{../image}');\">\r\n\t<div class=\"col-md-12\">\r\n\t\t<div class=\"single-slide\">\r\n\t\t\t<h1 class=\"single-slide-h1\">{../title}</h1>\r\n\t\t\t<p class=\"single-slide-p\">{../credits}</p>\r\n\t\t\t<h2  style=\"color: {../color};\">{../content}</h2>\r\n\t\t\t<form method=\"GET\" action=\"{../action}\">\r\n\t\t\t\t<button type=\"submit\" class=\"single-slide-btn\">\r\n\t\t\t\t    {../buttonLabel}\r\n\t\t\t\t</button>\r\n\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"{../queryString}\">\r\n\t\t\t\t<input type=\"hidden\" name=\"page_key\" value=\"{../key}\">\r\n\t\t\t</form>\r\n\t\t</div>\r\n\t</div>\r\n</div>",
+			"less":".custom-wrapper {\r\n    width: 100vw;\r\n    position: relative;\r\n    left: 50%;\r\n    right: 50%;\r\n    margin-left: -50vw;\r\n    margin-right: -50vw;\r\n    margin-top: -20px;\r\n    /*height: 300px;*/\r\n    border-style: none;\r\n    box-shadow: none;\r\n    .bx-next {\r\n        right: 24px !important;\r\n    }\r\n    .bx-prev {\r\n        left: 24px !important;\r\n    }\r\n    .bx-pager {\r\n        &.bx-default-pager {\r\n            a {\r\n                background: #666;\r\n                text-indent: -9999px;\r\n                display: block;\r\n                width: 39px;\r\n                height: 5px;\r\n                margin: 0 5px;\r\n                outline: 0;\r\n                border-radius: 2px;\r\n                &:hover, &.active, &:focus {\r\n                  background: #000;\r\n                }\r\n            }\r\n        }\r\n    }\r\n    .imgCarousel {\r\n        background-size: cover;\r\n        min-height: 400px;\r\n        &.contain-right {\r\n            background-position: right;\r\n            background-size: contain;\r\n            background-repeat: no-repeat;\r\n            background-color: #030a10;\r\n        }\r\n    }\r\n    \r\n    .single-slide {\r\n        max-width: 70%;\r\n        margin: 30px 75px;\r\n        display: flex;\r\n        min-height: 300px;\r\n        flex-direction: column;\r\n        justify-content: center;\r\n        padding: 20px 0;\r\n    }\r\n    .single-slide-h1 {\r\n        color: white;\r\n        font-size: 56px;\r\n        margin-top: 0;\r\n        margin-bottom: 40px;\r\n        font-weight: 500 !important;\r\n    }\r\n    .single-slide-p {\r\n        color: white;\r\n        font-size: 18px;\r\n        line-height: 28px;\r\n        margin: 0 0 10px;\r\n    }\r\n    .single-slide-btn {\r\n        margin-top: 40px;\r\n        width: 200px !important;\r\n        padding: 14px 20px;\r\n        display: block;\r\n        text-align: center;\r\n        border: none;\r\n        font-size: 16px;\r\n        font-weight: bold;\r\n        background: #ffd600;\r\n        color: #111;\r\n        border-radius: 0.2em;\r\n    }\r\n}",
+			"data":"[\r\n    {\r\n        \"title\":\"Unleashing Potential\",\r\n        \"content\": \"Full width slider, forced to top position.\",\r\n        \"key\": \"slide-1\",\r\n        \"queryString\": \"1\",\r\n        \"buttonLabel\": \"Register Now\",\r\n        \"action\": \"register\",\r\n        \"image\": \"/plugins/nodebb-widget-html-extended/images/tyler-van-der-hoeven-_ok8uVzL2gI-unsplash.jpg\",\r\n        \"credits\": \"<span>Photo by <a href=\\\"https://unsplash.com/@tyvdh?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText\\\">Tyler van der Hoeven</a> on <a href=\\\"https://unsplash.com/backgrounds?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText\\\">Unsplash</a></span>\",\r\n        \"position\": \"center\",\r\n        \"cssClass\": \"contain-right\",\r\n        \"color\": \"#5ea4ba\"\r\n    },\r\n    {\r\n        \"title\":\"bxSlider\",\r\n        \"content\": \"The fully-loaded, responsive jQuery content slider\",\r\n        \"key\": \"slide-2\",\r\n        \"queryString\": \"2\",\r\n        \"buttonLabel\": \"<span style=\\\"display: flex;\\\"><img src=\\\"/plugins/nodebb-widget-html-extended/images/github.svg\\\" width=\\\"24px\\\">&nbsp;&nbsp;See on Github</span>\",\r\n        \"action\": \"https://github.com/stevenwanderski/bxslider-4\",\r\n        \"image\": \"/plugins/nodebb-widget-html-extended/images/joshua-sortino-f3uWi9G-lus-unsplash.jpg\",\r\n        \"credits\": \"<span>Photo by <a href=\\\"https://unsplash.com/@sortino?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText\\\">Joshua Sortino</a> on <a href=\\\"https://unsplash.com/backgrounds?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText\\\">Unsplash</a></span>\",\r\n        \"position\": \"center\",\r\n        \"color\": \"#ffffff\"\r\n    },\r\n    {\r\n        \"title\":\"Enjoy it\",\r\n        \"content\": \"Start with free templates from <a href=\\\"https://froala.com/design-blocks/\\\">Froala</a>, and illustrations from <a href=\\\"https://undraw.co/\\\">unDraw</a></h2>\",\r\n        \"key\": \"slide-3\",\r\n        \"queryString\": \"3\",\r\n        \"buttonLabel\": \"Show categories\",\r\n        \"action\": \"categories\",\r\n        \"image\": \"/plugins/nodebb-widget-html-extended/images/krisztian-tabori-nZGNVOvEYio-unsplash.jpg\",\r\n        \"credits\": \"<span>Photo by <a href=\\\"https://unsplash.com/@ktabori?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText\\\">Krisztian Tabori</a> on <a href=\\\"https://unsplash.com/backgrounds?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText\\\">Unsplash</a></span>\",\r\n        \"position\": \"center\"\r\n    }\r\n]",
+			"sliderMode":"fade",
+			"maxSlides":"",
+			"wrapperClass":"custom-wrapper",
+			"enablePager":"on",
+			"enableControls":"on",
+			"forceTop":"on",
+			"title":"Complex Features",
+			"container":""
+		}
+	}
+]
+
+

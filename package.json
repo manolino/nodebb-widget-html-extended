@@ -1,0 +1,32 @@
+{
+  "name": "nodebb-widget-html-extended",
+  "version": "0.1.0",
+  "description": "Enhanced HTML widget for NodeBB with slider functionality",
+  "main": "library.js",
+  "dependencies": {
+    "bxslider": "^4.2.14",
+    "selectize": "^0.12.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manolino/nodebb-widget-html-extended"
+  },
+  "keywords": [
+    "nodebb",
+    "widget",
+    "html",
+    "slider",
+	"benchpress",
+    "bxslider",
+    "ace"
+  ],
+  "author": "Manuel Valle <manuelvalle@intuitivedemocracy.com> (https://www.intuitivedemocracy.com)",
+  "license": "BSD-2-Clause",
+  "nbbpm": {
+    "compatibility": "^1.16.0"
+  }
+}

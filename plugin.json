@@ -1,0 +1,47 @@
+{
+	"id":"nodebb-widget-html-extended",
+	"name":"NodeBB HTML Extended",
+	"description":"Enhanced HTML widget with ACE editor and BX Slider functionalities",
+	"url":"https://github.com/manolino/nodebb-widget-html-extended",
+	"main":"./library.js",
+	"hooks":[
+		{
+			"hook":"static:app.load", "method":"init"
+		},
+		{
+			"hook":"action:plugin.activate", "method":"activate"
+		},
+		{
+			"hook": "filter:middleware.render", "method": "renderACPTemplate"
+		},
+		{
+			"hook": "filter:widgets.getWidgets", "method":"defineWidgets"
+		},
+		{
+			"hook":"filter:widget.render:html-extended", "method":"renderHtmlExtended"
+		}
+	],
+	"staticDirs": {
+		"images": "./public/images"
+	},
+	"acpScripts":[
+		"./node_modules/selectize/dist/js/standalone/selectize.js",
+		"../ace-builds/src/ace.js",
+		"../ace-builds/src/ext-language_tools.js",
+		"./public/lib/admin/html-extended.js"
+	],
+	"modules":{
+		"intuitivedemocracy/html-extended.js":"./public/lib/html-extended.js",
+		"bxslider.js":"./node_modules/bxslider/dist/jquery.bxslider.js"
+	},
+	"templates":"./public/templates",
+	"css": [
+		"./node_modules/bxslider/dist/jquery.bxslider.css"
+	],
+	"less":[
+		"./public/less/client.less"
+	],
+	"acpLess":[
+		"./public/less/admin.less"
+	]
+}
