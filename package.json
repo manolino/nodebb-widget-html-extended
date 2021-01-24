@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/manolino/nodebb-widget-html-extended"
+    "url": "git+https://github.com/manolino/nodebb-widget-html-extended.git"
   },
   "keywords": [
     "nodebb",
     "widget",
     "html",
     "slider",
-	"benchpress",
+    "benchpress",
     "bxslider",
     "ace"
   ],
@@ -28,5 +28,9 @@
   "license": "BSD-2-Clause",
   "nbbpm": {
     "compatibility": "^1.16.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/manolino/nodebb-widget-html-extended/issues"
+  },
+  "homepage": "https://github.com/manolino/nodebb-widget-html-extended#readme"
 }
