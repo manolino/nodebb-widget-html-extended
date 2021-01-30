@@ -22,26 +22,28 @@
 		}
 	],
 	"staticDirs": {
-		"images": "./public/images"
+		"images": "./public/images",
+		"bxslider": "../bxslider/dist/images"
 	},
 	"acpScripts":[
-		"./node_modules/selectize/dist/js/standalone/selectize.js",
+		"../selectize/dist/js/standalone/selectize.js",
 		"../ace-builds/src/ace.js",
 		"../ace-builds/src/ext-language_tools.js",
 		"./public/lib/admin/html-extended.js"
 	],
 	"modules":{
 		"intuitivedemocracy/html-extended.js":"./public/lib/html-extended.js",
-		"bxslider.js":"./node_modules/bxslider/dist/jquery.bxslider.js"
+		"bxslider.js":"../bxslider/dist/jquery.bxslider.js"
 	},
 	"templates":"./public/templates",
 	"css": [
-		"./node_modules/bxslider/dist/jquery.bxslider.css"
+		"../bxslider/dist/jquery.bxslider.css"
 	],
 	"less":[
 		"./public/less/client.less"
 	],
 	"acpLess":[
+		"../selectize/dist/less/selectize.bootstrap3.less",
 		"./public/less/admin.less"
 	]
 }
