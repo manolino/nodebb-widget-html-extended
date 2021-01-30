@@ -22,11 +22,14 @@ define('intuitivedemocracy/admin/html-extended', ['ace/ace', 'ace/ext/language_t
 
 	Widget.init = function(options) {
 		// Handle browser native exitFullscreen command ESC
-		document.addEventListener('fullscreenchange', (event) => {
-			if (!document.fullscreenElement) {
-				 $(event.target).removeClass('fullscreen');
-			}	 
-		});
+		if (screenfull.isEnabled) {
+			screenfull.on('change', event => {
+				$(event.target).find('.delete-widget').toggleClass('hidden', screenfull.isFullscreen);
+				$(event.target).closest('[data-widget]').find('pre').toggleClass('fullscreen', screenfull.isFullscreen);
+				$(event.target).closest('.widget-area.ui-sortable').sortable( screenfull.isFullscreen ? 'disable' : 'enable' );
+				Widget.instances[$(event.target).closest('[data-widget]').data('id')].editor.focus();
+			});						
+		}
 
 		/*
 		 *	 Events handlers
@@ -45,6 +48,11 @@ define('intuitivedemocracy/admin/html-extended', ['ace/ace', 'ace/ext/language_t
 		})
 
 		$('#widgets .widget-area')
+		.on('click', '.expand-widget', event => {
+			if (screenfull.isEnabled) {
+				screenfull.toggle($(event.target).closest('[data-widget]')[0]);
+			}
+		})
 		.on('click', 'div[data-widget="html-extended"] > .panel-heading', function (evt) {
 			if ($(evt.target).hasClass('delete-widget') || $(evt.target).parent('.delete-widget').length) return;
 
@@ -159,9 +167,40 @@ define('intuitivedemocracy/admin/html-extended', ['ace/ace', 'ace/ext/language_t
 					}
 				}).first().click();
 
-				setupFullscreen(this.parentElement);
 				$sortable.sortable( "disable" );
-				//})
+
+				/**
+				 * This is a workaround for #160 until ace.js provide a way to define the parentNode of the autocomplete list.
+				 * https://github.com/thm-mni-ii/JooMDD/pull/161
+				 */
+
+				// Select the node that will be observed for mutations
+				var htmlCollection = document.getElementsByTagName("body");
+				var body = htmlCollection.item(0);
+
+				// Options for the observer (which mutations to observe)
+				var config = { attributes: false, childList: true, subtree: false };
+
+				// Callback function to execute when mutations are observed
+				var callback = function(mutationsList, observer) {
+					for(var mutation of mutationsList) {
+						if (mutation.type == 'childList' && mutation.addedNodes.length > 0) {
+							var autocompleteDiv = mutation.addedNodes.item(0);
+
+							if (autocompleteDiv.classList.contains("ace_autocomplete")){
+								aceEditor.container.appendChild(aceEditor.completer.popup.container);
+							}
+						}
+					}
+				};
+
+				// Create an observer instance linked to the callback function
+				var observer = new MutationObserver(callback);
+
+				// Start observing the target node for configured mutations
+				observer.observe(body, config);
+				/** **/
+
 			} else {
 				$panel.find('.nav a').off('click');
 				var ID = $panel.find('pre.ace-placeholder').attr('id') 
@@ -204,45 +243,6 @@ define('intuitivedemocracy/admin/html-extended', ['ace/ace', 'ace/ext/language_t
 			}
 		});
 	};
-
-	function setupFullscreen(container) {
-		var $container = $(container);
-		var btn = $container.find('.expand-widget');
-		var fsMethod;
-		var exitMethod;
-
-		if (container.requestFullscreen) {
-			fsMethod = 'requestFullscreen';
-			exitMethod = 'exitFullscreen';
-		} else if (container.mozRequestFullScreen) {
-			fsMethod = 'mozRequestFullScreen';
-			exitMethod = 'mozCancelFullScreen';
-		} else if (container.webkitRequestFullscreen) {
-			fsMethod = 'webkitRequestFullscreen';
-			exitMethod = 'webkitCancelFullScreen';
-		} else if (container.msRequestFullscreen) {
-			fsMethod = 'msRequestFullscreen';
-			exitMethod = 'msCancelFullScreen';
-		}
-
-		if (fsMethod) {
-			btn.addClass('active');
-			btn.off('click').on('click', function () {
-				if ($container.hasClass('fullscreen')) {
-					document[exitMethod]();
-					$container.removeClass('fullscreen');
-					$container.closest('.widget-area.ui-sortable').sortable( "enable" );
-					$(this).closest('[data-widget]').find('pre').removeClass('fullscreen');
-				} else {
-					container[fsMethod]();
-					$container.addClass('fullscreen');
-					$container.closest('.widget-area.ui-sortable').sortable( "disable" );
-					$(this).closest('[data-widget]').find('pre.ace-placeholder').addClass('fullscreen');
-				}
-				Widget.instances[$(this).closest('[data-widget]').data('id')].editor.focus()
-			});
-		}
-	}
 
 	function loadTemplateData(route, key, callback) {
 		if (typeof key==='function') {

@@ -29,6 +29,7 @@
 		"../selectize/dist/js/standalone/selectize.js",
 		"../ace-builds/src/ace.js",
 		"../ace-builds/src/ext-language_tools.js",
+		"../screenfull/dist/screenfull.js",
 		"./public/lib/admin/html-extended.js"
 	],
 	"modules":{

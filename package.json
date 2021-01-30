@@ -5,7 +5,8 @@
   "main": "library.js",
   "dependencies": {
     "bxslider": "^4.2.14",
-    "selectize": "^0.12.6"
+    "selectize": "^0.12.6",
+    "screenfull": "^5.0.2"
   },
   "devDependencies": {},
   "scripts": {
