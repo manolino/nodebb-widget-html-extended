@@ -1,6 +1,6 @@
 {
   "name": "nodebb-widget-html-extended",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Enhanced HTML widget for NodeBB with slider functionality",
   "main": "library.js",
   "dependencies": {
